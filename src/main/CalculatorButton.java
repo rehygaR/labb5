@@ -4,7 +4,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 
-public abstract class CalculatorButton extends JButton implements ActionListener { // JLabel.getText(); returnerar en sträng som blir vår högra operand
+public abstract class CalculatorButton extends JButton implements ActionListener { // JLabel.getText(); returnerar en sträng som blir vår högra operand vid operationer
 	
 	
 	
