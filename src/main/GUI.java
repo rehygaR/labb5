@@ -23,9 +23,9 @@ public class GUI extends JFrame{
 	public GUI(Situation sit) { // IntBinaryOperator
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		canvas = new JPanel(new GridBagLayout());
+		this.canvas = new JPanel(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
-		keyPad = new JPanel(new GridLayout(4,4,5,5));
+		this.keyPad = new JPanel(new GridLayout(4,4,5,5));
 		sit.display = new JLabel("0"); // Startar displayen med siffran noll när man startar programmet
 		sit.display.setVisible(true);
 		sit.display.setPreferredSize(new Dimension(300, 300));
