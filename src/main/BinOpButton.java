@@ -22,15 +22,7 @@ public class BinOpButton extends CalculatorButton{
 		super(sit, name);
 		this.operator = operator;
 		
-		 if (sit.state == sit.state.Input1 || sit.state == sit.state.HasResult) {
-	            sit.leftOperand = Integer.parseInt(name);
-	            sit.binaryOperator = this;
-	            this.setColorRed(); // Färga knappen röd
-	        } else if (sit.state == sit.state.OpReady) {
-	        	this.setColorGray(); // Färga den gamla knappen grå
-	            sit.binaryOperator = this;
-	            this.setColorRed(); // Färga den nya knappen röd
-	        }
+
 	}
 	
 	public int applyOperation() {
@@ -40,6 +32,14 @@ public class BinOpButton extends CalculatorButton{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
+		 if (sit.state == sit.state.Input1 || sit.state == sit.state.HasResult) {
+	            sit.binaryOperator = this;
+	            this.setColorRed(); // Färga knappen röd
+	        } else if (sit.state == sit.state.OpReady) {
+	        	this.setColorGray(); // Färga den gamla knappen grå
+	            sit.binaryOperator = this;
+	            this.setColorRed(); // Färga den nya knappen röd
+	        }
 		transition();
 	}
 

@@ -24,9 +24,10 @@ public abstract class CalculatorButton extends JButton implements ActionListener
 		
 		super(name); // Ger JButtonen namnet på knappen så man kan veta vilken knapp det är, ex om det är nr 9 eller operanden +
 		this.sit = sit;
-		this.setBackground(Color.gray); // Sätter färgen
+		this.setBackground(Color.white); // Sätter färgen
 		this.setPreferredSize(new Dimension(50,50)); // Sätter den önskade dimensionen på knapparna, detta fall 50x50 pixlar
-		this.setFont(new Font("Dialog", Font.BOLD, 10)); // Sätter Fonten
+		this.setForeground(Color.black);
+		this.setFont(new Font("Dialog", Font.BOLD, 30)); // Sätter Fonten
 		this.addActionListener(this);
 		//this.actionPerformed();
 		
