@@ -32,7 +32,7 @@ public class GUI extends JFrame{
 		setTitle("Miniräknare");
 		
 		this.canvas = new JPanel(new GridBagLayout());
-		this.keyPad = new JPanel(new GridLayout(4,4,5,5));
+		this.keyPad = new JPanel(new GridLayout(4,4,6,6));
 		
 		GridBagConstraints gbc = new GridBagConstraints();
 		//gbc.insets = new Insets(15,15,15,15);

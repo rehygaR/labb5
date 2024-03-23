@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
 public abstract class CalculatorButton extends JButton implements ActionListener { // JLabel.getText(); returnerar en sträng som blir vår högra operand vid operationer
@@ -29,6 +30,7 @@ public abstract class CalculatorButton extends JButton implements ActionListener
 		this.setForeground(Color.black);
 		this.setFont(new Font("Dialog", Font.BOLD, 30)); // Sätter Fonten
 		this.addActionListener(this);
+//		this.setOpaque(true);
 		//this.actionPerformed();
 		
 	}
@@ -42,7 +44,7 @@ public abstract class CalculatorButton extends JButton implements ActionListener
 	}
 	
 	public void setColorGray() {
-		this.setBackground(Color.gray);
+		this.setBackground(Color.white);
 	}
 	
 	/**

@@ -1,5 +1,5 @@
 package main;
 
-public enum State {
+enum State {
 	Input1, OpReady, Input2, HasResult
 }
