@@ -3,6 +3,7 @@ package main;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
@@ -10,64 +11,64 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
-public abstract class CalculatorButton extends JButton implements ActionListener { // JLabel.getText(); returnerar en sträng som blir vår högra operand vid operationer
-	
+abstract class CalculatorButton extends JButton implements ActionListener { // JLabel.getText(); returnerar en
+																					// sträng som blir vår högra operand
+																					// vid operationer
+	private final int btnSize = 50;
+	private final int fontSize = 30;
 	Situation sit;
-	
-	
+
 	/**
-	 * Konstruktorn för den abstrakta klassen som ärvs av de konkreta knapparna
-	 * som ska finnas på minirknaren.
+	 * Konstruktorn för den abstrakta klassen som ärvs av de konkreta knapparna som
+	 * ska finnas på minirknaren.
+	 * 
 	 * @param sit
 	 * @param name
 	 */
-	public CalculatorButton(Situation sit, String name) {
-		
-		super(name); // Ger JButtonen namnet på knappen så man kan veta vilken knapp det är, ex om det är nr 9 eller operanden +
+	CalculatorButton(Situation sit, String name) {
+
+		super(name); // Ger JButtonen namnet på knappen så man kan veta vilken knapp det är, ex om
+						// det är nr 9 eller operanden +
 		this.sit = sit;
 		this.setBackground(Color.white); // Sätter färgen
-		this.setPreferredSize(new Dimension(50,50)); // Sätter den önskade dimensionen på knapparna, detta fall 50x50 pixlar
+		this.setPreferredSize(new Dimension(btnSize, btnSize)); // Sätter den önskade dimensionen på knapparna, detta fall 50x50
+														// pixlar
 		this.setForeground(Color.black);
-		this.setFont(new Font("Dialog", Font.BOLD, 30)); // Sätter Fonten
+		this.setFont(new Font("Dialog", Font.BOLD, fontSize)); // Sätter Fonten
 		this.addActionListener(this);
 //		this.setOpaque(true);
-		//this.actionPerformed();
-		
+		// this.actionPerformed();
+
 	}
 	
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		transition();
+	}
+
 	/**
-	 * Instans metod som sätter bakgrunden på knappen som trycks till röd, 
-	 * dvs indikerar vilken knapp som tryckts
+	 * Instans metod som sätter bakgrunden på knappen som trycks till röd, dvs
+	 * indikerar vilken knapp som tryckts
 	 */
-	public void setColorRed() {
+	void setColorRed() {
 		this.setBackground(Color.red);
 	}
-	
-	public void setColorGray() {
+
+	void setColorGray() {
 		this.setBackground(Color.white);
 	}
-	
+
 	/**
 	 * Returnerar knappens text, som möjliggör multiplikation
 	 */
 	public String toString() {
 		return this.getText();
 	}
-	
+
 	/**
-	 * Återställer displayen när metoden tillkallas 
-	 * (Återställer INTE beräkningar, utan bara siffran)
+	 * Abstrakt metod vars syfte är att genomföra övergångar mellan grund- tillstånd
+	 * enligt tillståndsdiagrammet.
 	 */
-	public void resetDisplay() {
-		this.sit.display = new JLabel("0");
-	}
-	
-	/**
-	 * Abstrakt metod vars syfte är att genomföra övergångar mellan grund-
-	 * tillstånd enligt tillståndsdiagrammet.
-	 */
-	public abstract void transition();
-	
-	
-	
+	abstract void transition();
+
 }

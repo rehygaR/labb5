@@ -15,34 +15,31 @@ import javax.swing.JPanel;
 import javax.swing.border.Border;
 
 @SuppressWarnings("serial")
-public class GUI extends JFrame{
-	
+class GUI extends JFrame {
+
 	private JPanel canvas;
 	private JPanel keyPad;
-	
-	
-	
-	
+	private final int keypadNumOfBtns = 4;
+	private final int btnDist = 6;
+	private final int[] canvasSize = {250, 300};
+	private final int borderThickness = 2;
+	private final int fontThickness = 40;
 	/**
 	 * 
 	 * @param sit
 	 */
-	public GUI(Situation sit) { // IntBinaryOperator
+	GUI(Situation sit) { // IntBinaryOperator
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("Miniräknare");
-		
-		this.canvas = new JPanel(new GridBagLayout());
-		this.keyPad = new JPanel(new GridLayout(4,4,6,6));
-		
-		GridBagConstraints gbc = new GridBagConstraints();
-		//gbc.insets = new Insets(15,15,15,15);
-		
-		
-		canvas.setPreferredSize(new Dimension(250, 300));
-		
 
-		
-		
+		this.canvas = new JPanel(new GridBagLayout());
+		this.keyPad = new JPanel(new GridLayout(keypadNumOfBtns, keypadNumOfBtns, btnDist, btnDist));
+
+		GridBagConstraints gbc = new GridBagConstraints();
+		// gbc.insets = new Insets(15,15,15,15);
+
+		canvas.setPreferredSize(new Dimension(canvasSize[0], canvasSize[1]));
+
 		DigitButton btn0 = new DigitButton(sit, "7");
 		DigitButton btn1 = new DigitButton(sit, "8");
 		DigitButton btn2 = new DigitButton(sit, "9");
@@ -59,7 +56,7 @@ public class GUI extends JFrame{
 		EqualsButton btn13 = new EqualsButton(sit, "=");
 		CancelButton btn14 = new CancelButton(sit, "C");
 		BinOpButton btn15 = new BinOpButton(sit, "+", (a, b) -> a + b);
-		
+
 		keyPad.add(btn0);
 		keyPad.add(btn1);
 		keyPad.add(btn2);
@@ -76,33 +73,29 @@ public class GUI extends JFrame{
 		keyPad.add(btn13);
 		keyPad.add(btn14);
 		keyPad.add(btn15);
-		
-		keyPad.setPreferredSize(new Dimension(250, 250));
+
+		keyPad.setPreferredSize(new Dimension(canvasSize[0], canvasSize[0]));
 		keyPad.setBackground(Color.gray);
-		
+
 		sit.display.setText("0");
 		sit.display.setOpaque(true);
 		sit.display.setBackground(Color.LIGHT_GRAY);
-		sit.display.setBorder(BorderFactory.createLineBorder(Color.black, 2));
-		sit.display.setPreferredSize(new Dimension(250, 50));
+		sit.display.setBorder(BorderFactory.createLineBorder(Color.black, borderThickness));
+		sit.display.setPreferredSize(new Dimension(canvasSize[0], canvasSize[1] - canvasSize[0]));
 		sit.display.setHorizontalAlignment(JLabel.RIGHT);
-		sit.display.setFont(new Font("Dialog", Font.BOLD, 40));
+		sit.display.setFont(new Font("Dialog", Font.BOLD, fontThickness));
 		sit.display.setForeground(Color.black);
-		
-		
-		
+
 		gbc.gridx = 0;
 		gbc.gridy = 0;
 		canvas.add(sit.display, gbc);
 		gbc.gridx = 0;
 		gbc.gridy = 1;
 		canvas.add(keyPad, gbc);
-		
-		
+
 		setContentPane(canvas);
 		pack();
 		setVisible(true);
 	}
-	
-	
+
 }
